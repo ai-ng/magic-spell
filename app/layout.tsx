@@ -1,10 +1,14 @@
 import { GeistSans } from "geist/font/sans";
 import "./globals.css";
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 
 export const metadata: Metadata = {
 	title: "Magic Spell",
 	description: "AI powered text editing at lightning fast speed.",
+};
+
+export const viewport: Viewport = {
+	maximumScale: 1, // Disable auto-zoom on mobile Safari
 };
 
 export default function RootLayout({
