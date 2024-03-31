@@ -37,13 +37,13 @@ export default function Home() {
 				onChange={(e) => {
 					if (!isLoading) setText(e.target.value);
 				}}
-				className="rounded-lg drop-shadow-sm bg-gray-100 border border-gray-200 px-2 pt-2 pb-6 md:resize dark:bg-gray-900 dark:border-gray-800 min-w-full max-w-7xl min-h-32 md:min-w-96 focus:outline-none focus:border-blue-300 dark:focus:border-blue-700 transition-colors max-h-[52rem] md:text-lg"
+				className="rounded-lg drop-shadow-sm bg-gray-100 border border-gray-200 px-2 pt-2 pb-6 md:resize dark:bg-gray-900 dark:border-gray-800 min-w-full max-w-7xl min-h-32 md:min-w-96 focus:outline-none focus:border-blue-300 dark:focus:border-blue-700 transition-colors max-h-[52rem]"
 				placeholder="It was a dark and stormy night..."
 				aria-label="Text"
 				cacheMeasurements
 			/>
 
-			<div className="rounded-full drop-shadow-sm bg-gray-100 border border-gray-200 md:text-lg -mt-5 dark:bg-gray-900 dark:border-gray-800 flex focus-within:border-blue-300 dark:focus-within:border-blue-700 transition-colors">
+			<div className="rounded-full drop-shadow-sm bg-gray-100 border border-gray-200 -mt-5 dark:bg-gray-900 dark:border-gray-800 flex focus-within:border-blue-300 dark:focus-within:border-blue-700 transition-colors">
 				<input
 					className="bg-transparent rounded-full py-1 px-4 focus:outline-none"
 					placeholder="Make the text more unique..."
