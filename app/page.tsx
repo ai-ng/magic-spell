@@ -22,7 +22,7 @@ export default function Home() {
 
 	return (
 		<form
-			className="flex flex-col h-screen items-center justify-center"
+			className="flex flex-col h-screen items-center justify-center py-3"
 			onSubmit={(e) => {
 				handleSubmit(e);
 				setInput("");
