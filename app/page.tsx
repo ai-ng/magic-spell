@@ -22,15 +22,13 @@ export default function Home() {
 
 	return (
 		<form
-			className="flex flex-col h-screen items-center justify-center py-3"
+			className="flex flex-col h-screen w-screen items-center justify-center p-3"
 			onSubmit={(e) => {
 				handleSubmit(e);
 				setInput("");
 			}}
 		>
 			<TextareaAutosize
-				cols={40}
-				minRows={8}
 				value={
 					isLoading && completion.length > 0
 						? completion.trim()
@@ -39,7 +37,7 @@ export default function Home() {
 				onChange={(e) => {
 					if (!isLoading) setText(e.target.value);
 				}}
-				className="rounded-lg drop-shadow-sm bg-gray-100 border border-gray-200 px-2 pt-2 pb-6 md:resize dark:bg-gray-900 dark:border-gray-800 w-full max-w-7xl min-h-32 md:min-w-96 focus:outline-none focus:border-blue-300 dark:focus:border-blue-700 transition-colors max-h-[52rem] md:text-lg"
+				className="rounded-lg drop-shadow-sm bg-gray-100 border border-gray-200 px-2 pt-2 pb-6 md:resize dark:bg-gray-900 dark:border-gray-800 min-w-full max-w-7xl min-h-32 md:min-w-96 focus:outline-none focus:border-blue-300 dark:focus:border-blue-700 transition-colors max-h-[52rem] md:text-lg"
 				placeholder="It was a dark and stormy night..."
 				aria-label="Text"
 				cacheMeasurements
