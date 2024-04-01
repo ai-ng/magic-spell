@@ -56,7 +56,6 @@ export default function Home() {
 					placeholder="Make the text more unique..."
 					onChange={handleInputChange}
 					value={input}
-					autoFocus
 					aria-label="Prompt"
 					required
 				/>

@@ -53,7 +53,9 @@ export default function RootLayout({
 					<p>
 						Built with{" "}
 						<A href="https://sdk.vercel.ai">Vercel AI SDK</A> &{" "}
-						<A href="https://groq.com">Groq</A> -{" "}
+						<A href="https://groq.com">Groq</A>
+					</p>
+					<p>
 						<A href="https://github.com/ai-ng/magic-spell">
 							source
 						</A>{" "}
