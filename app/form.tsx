@@ -1,6 +1,6 @@
 "use client";
 
-import { IconLoader2, IconSparkles } from "@tabler/icons-react";
+import { LoaderIcon, SparklesIcon } from "@/app/icons";
 import { useCompletion } from "ai/react";
 import { useEffect, useState } from "react";
 import TextareaAutosize from "react-textarea-autosize";
@@ -66,11 +66,7 @@ export default function Form() {
 					type="submit"
 					className="rounded-full bg-blue-600 hover:bg-blue-500 active:bg-blue-700 transition-colors text-white size-8 md:size-10 flex items-center justify-center"
 				>
-					{isLoading ? (
-						<IconLoader2 className="animate-spin" />
-					) : (
-						<IconSparkles />
-					)}
+					{isLoading ? <LoaderIcon /> : <SparklesIcon />}
 				</button>
 			</div>
 		</form>
