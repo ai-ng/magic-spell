@@ -4,17 +4,17 @@ import { WandIcon } from "@/app/icons";
 
 export default function Home() {
 	return (
-		<main className="min-h-screen flex flex-col items-center justify-between p-3">
+		<main className="min-h-screen flex flex-col items-center justify-between px-3 py-10">
 			<div>
-				<h1 className="font-extrabold text-xl mt-10 flex items-center justify-center">
+				<h1 className="font-semibold text-xl flex items-center justify-center">
 					<WandIcon />
 
-					<span className="bg-gradient-to-b dark:from-gray-50 dark:to-gray-200 from-gray-950 to-gray-800 bg-clip-text text-transparent ml-2">
+					<span className="bg-gradient-to-b dark:from-gray-50 dark:to-gray-200 from-gray-950 to-gray-800 bg-clip-text text-transparent ml-3">
 						Magic Spell
 					</span>
 				</h1>
 
-				<p className="text-sm mt-1 text-center font-mono">
+				<p className="mt-3 text-center font-mono">
 					AI prompting built into your{" "}
 					<strong className="bg-yellow-200 text-black dark:bg-yellow-300">
 						&lt;textarea&gt;
@@ -25,7 +25,7 @@ export default function Home() {
 
 			<Form />
 
-			<footer className="mb-10 text-center text-sm dark:text-gray-400 text-gray-600 font-mono">
+			<footer className="text-center text-sm dark:text-gray-400 text-gray-600 font-mono">
 				<p>
 					<A href="https://github/ai-ng">ai-ng</A> /{" "}
 					<A href="https://nickoates.com">nick oates</A>
