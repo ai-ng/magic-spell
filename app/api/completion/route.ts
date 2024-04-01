@@ -29,8 +29,8 @@ export async function POST(req: Request) {
 		],
 	});
 
+	console.timeEnd(req.headers.get("x-vercel-id") || undefined);
+
 	const stream = OpenAIStream(response);
 	return new StreamingTextResponse(stream);
-
-	console.timeEnd(req.headers.get("x-vercel-id") || undefined);
 }
