@@ -4,7 +4,7 @@ import { WandIcon } from "@/app/icons";
 
 export default function Home() {
 	return (
-		<main className="min-h-screen flex flex-col items-center justify-between px-3 py-10">
+		<main className="flex flex-col items-center justify-between px-3 py-10 min-h-dvh">
 			<div>
 				<h1 className="font-semibold text-xl flex items-center justify-center">
 					<WandIcon />
