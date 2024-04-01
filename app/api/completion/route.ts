@@ -3,9 +3,6 @@ import { OpenAIStream, StreamingTextResponse } from "ai";
 import { Ratelimit } from "@upstash/ratelimit";
 import { Redis } from "@upstash/redis";
 
-// export const runtime = "edge";
-// export const preferredRegion = "sfo1"; // Groq is hosted in San Francisco
-
 const ratelimit =
 	process.env.KV_REST_API_URL && process.env.KV_REST_API_TOKEN
 		? new Ratelimit({
@@ -24,8 +21,6 @@ const groq = new OpenAI({
 });
 
 export async function POST(req: Request) {
-	console.time(req.headers.get("x-vercel-id")! || "local");
-
 	if (ratelimit) {
 		const ip = req.headers.get("x-real-ip") ?? "local";
 		const rl = await ratelimit.limit(ip);
@@ -35,10 +30,8 @@ export async function POST(req: Request) {
 		}
 	}
 
-	console.timeEnd(req.headers.get("x-vercel-id") || "local");
-
 	const { text, prompt } = await req.json();
-	if (!prompt) return;
+	if (!prompt) return new Response("Prompt is required", { status: 400 });
 
 	const response = await groq.chat.completions.create({
 		model: "mixtral-8x7b-32768",
