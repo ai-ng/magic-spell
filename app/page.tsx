@@ -26,7 +26,7 @@ export default function Home() {
 
 			<footer className="text-center text-sm dark:text-gray-400 text-gray-600 font-mono">
 				<p>
-					<A href="https://github/ai-ng">ai-ng</A> /{" "}
+					<A href="https://github.com/ai-ng">ai-ng</A> /{" "}
 					<A href="https://nickoates.com">nick oates</A>
 				</p>
 				<p>
