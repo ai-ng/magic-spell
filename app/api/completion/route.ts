@@ -6,22 +6,17 @@ import { Redis } from "@upstash/redis";
 export const runtime = "edge";
 export const preferredRegion = "sfo1"; // Groq is hosted in San Francisco
 
-if (!process.env.KV_REST_API_URL || !process.env.KV_REST_API_TOKEN) {
-	throw new Error(
-		"Please link a Vercel KV instance or populate `KV_REST_API_URL` and `KV_REST_API_TOKEN`"
-	);
-}
-
-const redis = new Redis({
-	url: process.env.KV_REST_API_URL,
-	token: process.env.KV_REST_API_TOKEN,
-});
-
-const rateLimit = new Ratelimit({
-	redis,
-	limiter: Ratelimit.slidingWindow(10, "5 m"),
-	analytics: true,
-});
+const rateLimit =
+	process.env.KV_REST_API_URL && process.env.KV_REST_API_TOKEN
+		? new Ratelimit({
+				redis: new Redis({
+					url: process.env.KV_REST_API_URL,
+					token: process.env.KV_REST_API_TOKEN,
+				}),
+				limiter: Ratelimit.slidingWindow(10, "5 m"),
+				analytics: true,
+		  })
+		: false;
 
 const groq = new OpenAI({
 	apiKey: process.env.GROQ_API_KEY!,
@@ -32,10 +27,13 @@ export async function POST(req: Request) {
 	console.time(req.headers.get("x-vercel-id") || undefined);
 
 	const ip = req.headers.get("x-real-ip") ?? "local";
-	const rl = await rateLimit.limit(ip);
 
-	if (!rl.success) {
-		return new Response("Rate limit exceeded", { status: 429 });
+	if (rateLimit) {
+		const rl = await rateLimit.limit(ip);
+
+		if (!rl.success) {
+			return new Response("Rate limit exceeded", { status: 429 });
+		}
 	}
 
 	const { text, prompt } = await req.json();
