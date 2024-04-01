@@ -26,7 +26,7 @@ export default function RootLayout({
 			<body
 				className={`${GeistSans.variable} ${GeistMono.variable} font-sans bg-gray-50 dark:bg-gray-950 text-black dark:text-white flex flex-col items-center px-3 py-10 min-h-dvh`}
 			>
-				<Toaster richColors />
+				<Toaster richColors theme="system" />
 
 				<h1 className="font-semibold text-xl flex items-center justify-center">
 					<WandIcon />
