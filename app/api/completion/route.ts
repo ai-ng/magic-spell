@@ -38,7 +38,7 @@ export async function POST(req: Request) {
 	console.timeEnd(req.headers.get("x-vercel-id") || "local");
 
 	const { text, prompt } = await req.json();
-	if (!text || !prompt) return;
+	if (!prompt) return;
 
 	const response = await groq.chat.completions.create({
 		model: "mixtral-8x7b-32768",
