@@ -22,7 +22,7 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body
-				className={`${GeistSans.className} flex flex-col w-screen justify-center h-screen items-center bg-gray-50 dark:bg-gray-950 text-black dark:text-white`}
+				className={`${GeistSans.className} bg-gray-50 dark:bg-gray-950 text-black dark:text-white`}
 			>
 				<Toaster richColors />
 
