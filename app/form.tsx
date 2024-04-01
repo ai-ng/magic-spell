@@ -29,7 +29,7 @@ export default function Form() {
 
 	return (
 		<form
-			className="flex flex-col items-center justify-center min-w-full"
+			className="flex flex-col items-center justify-center min-w-full py-3"
 			onSubmit={(e) => {
 				handleSubmit(e);
 				setInput("");
