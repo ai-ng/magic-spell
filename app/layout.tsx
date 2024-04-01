@@ -38,7 +38,7 @@ export default function RootLayout({
 
 				<p className="mt-3 text-center font-mono">
 					AI prompting built into your{" "}
-					<strong className="bg-yellow-200 text-black dark:bg-yellow-300">
+					<strong className="bg-yellow-200 text-black dark:bg-yellow-300 rounded">
 						&lt;textarea&gt;
 					</strong>
 				</p>
