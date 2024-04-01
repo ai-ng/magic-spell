@@ -10,6 +10,8 @@ const groq = new OpenAI({
 });
 
 export async function POST(req: Request) {
+	console.time(req.headers.get("x-vercel-id") || undefined);
+
 	const { text, prompt } = await req.json();
 
 	const response = await groq.chat.completions.create({
@@ -29,4 +31,6 @@ export async function POST(req: Request) {
 
 	const stream = OpenAIStream(response);
 	return new StreamingTextResponse(stream);
+
+	console.timeEnd(req.headers.get("x-vercel-id") || undefined);
 }
