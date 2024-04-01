@@ -6,7 +6,7 @@ import { Redis } from "@upstash/redis";
 export const runtime = "edge";
 export const preferredRegion = "sfo1"; // Groq is hosted in San Francisco
 
-const rateLimit =
+const ratelimit =
 	process.env.KV_REST_API_URL && process.env.KV_REST_API_TOKEN
 		? new Ratelimit({
 				redis: new Redis({
@@ -24,17 +24,18 @@ const groq = new OpenAI({
 });
 
 export async function POST(req: Request) {
-	console.time(req.headers.get("x-vercel-id") || undefined);
+	console.time(req.headers.get("x-vercel-id")! || "local");
 
-	const ip = req.headers.get("x-real-ip") ?? "local";
-
-	if (rateLimit) {
-		const rl = await rateLimit.limit(ip);
+	if (ratelimit) {
+		const ip = req.headers.get("x-real-ip") ?? "local";
+		const rl = await ratelimit.limit(ip);
 
 		if (!rl.success) {
 			return new Response("Rate limit exceeded", { status: 429 });
 		}
 	}
+
+	console.timeEnd(req.headers.get("x-vercel-id") || "local");
 
 	const { text, prompt } = await req.json();
 
@@ -52,8 +53,6 @@ export async function POST(req: Request) {
 			},
 		],
 	});
-
-	console.timeEnd(req.headers.get("x-vercel-id") || undefined);
 
 	const stream = OpenAIStream(response);
 	return new StreamingTextResponse(stream);
