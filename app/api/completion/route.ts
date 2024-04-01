@@ -46,7 +46,7 @@ export async function POST(req: Request) {
 		messages: [
 			{
 				role: "system",
-				content: `You are a text editor. You will be given a prompt and a text to edit, which may be empty or incomplete. Edit the text to match the prompt, and only respond with the full edited version of the text - do not include any other information, context, or explanation. Do not include the prompt or otherwise preface your response.`,
+				content: `You are a text editor. You will be given a prompt and a text to edit, which may be empty or incomplete. Edit the text to match the prompt, and only respond with the full edited version of the text - do not include any other information, context, or explanation. Do not include the prompt or otherwise preface your response. Do not enclose the response in quotes.`,
 			},
 			{
 				role: "user",
