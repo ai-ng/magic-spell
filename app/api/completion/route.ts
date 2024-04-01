@@ -3,8 +3,8 @@ import { OpenAIStream, StreamingTextResponse } from "ai";
 import { Ratelimit } from "@upstash/ratelimit";
 import { Redis } from "@upstash/redis";
 
-export const runtime = "edge";
-export const preferredRegion = "sfo1"; // Groq is hosted in San Francisco
+// export const runtime = "edge";
+// export const preferredRegion = "sfo1"; // Groq is hosted in San Francisco
 
 const ratelimit =
 	process.env.KV_REST_API_URL && process.env.KV_REST_API_TOKEN
