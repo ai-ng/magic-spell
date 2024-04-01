@@ -1,4 +1,5 @@
 import { GeistSans } from "geist/font/sans";
+import { GeistMono } from "geist/font/mono";
 import "./globals.css";
 import type { Metadata, Viewport } from "next";
 import { Analytics } from "@vercel/analytics/react";
@@ -22,7 +23,7 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body
-				className={`${GeistSans.className} bg-gray-50 dark:bg-gray-950 text-black dark:text-white`}
+				className={`${GeistSans.variable} ${GeistMono.variable} font-sans bg-gray-50 dark:bg-gray-950 text-black dark:text-white`}
 			>
 				<Toaster richColors />
 

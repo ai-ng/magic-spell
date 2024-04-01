@@ -1,14 +1,19 @@
 import Form from "@/app/form";
+import { IconWand } from "@tabler/icons-react";
 
 export default function Home() {
 	return (
 		<main className="min-h-screen flex flex-col items-center justify-between p-3">
-			<div className="text-center">
-				<h1 className="font-extrabold text-3xl md:text-4xl bg-gradient-to-b dark:from-gray-50 dark:to-gray-200 from-gray-950 to-gray-800 bg-clip-text text-transparent mt-20">
-					Magic Spell
+			<div className="font-mono">
+				<h1 className="font-extrabold text-2xl md:text-3xl mt-20 flex items-center justify-center">
+					<IconWand className="size-7 md:size-8 mr-2" />
+
+					<span className="bg-gradient-to-b dark:from-gray-50 dark:to-gray-200 from-gray-950 to-gray-800 bg-clip-text text-transparent">
+						Magic Spell
+					</span>
 				</h1>
 
-				<p className="text-lg md:text-xl mt-4">
+				<p className="md:text-lg mt-2 text-center">
 					AI prompting built into your{" "}
 					<strong className="bg-yellow-200 text-black dark:bg-yellow-300">
 						&lt;textarea&gt;
@@ -19,7 +24,7 @@ export default function Home() {
 
 			<Form />
 
-			<footer className="mb-20 text-center md:text-lg dark:text-gray-400 text-gray-600">
+			<footer className="mb-20 text-center text-sm md:text-base dark:text-gray-400 text-gray-600 font-mono">
 				<p>
 					<A href="https://github/ai-ng">ai-ng</A> /{" "}
 					<A href="https://nickoates.com">nick oates</A>
