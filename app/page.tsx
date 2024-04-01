@@ -19,7 +19,6 @@ export default function Home() {
 					<strong className="bg-yellow-200 text-black dark:bg-yellow-300">
 						&lt;textarea&gt;
 					</strong>
-					.
 				</p>
 			</div>
 
