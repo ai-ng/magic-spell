@@ -10,6 +10,10 @@ import { WandIcon } from "@/app/icons";
 export const metadata: Metadata = {
 	title: "Magic Spell",
 	description: "AI powered text editing at lightning fast speed.",
+	metadataBase: new URL("https://magic-spell.vercel.app"),
+	twitter: {
+		card: "summary_large_image",
+	},
 };
 
 export const viewport: Viewport = {
