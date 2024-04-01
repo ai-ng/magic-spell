@@ -9,7 +9,7 @@ import { WandIcon } from "@/app/icons";
 
 export const metadata: Metadata = {
 	title: "Magic Spell",
-	description: "AI powered text editing at lightning fast speed.",
+	description: "AI prompting built into your <textarea>",
 	metadataBase: new URL("https://magic-spell.vercel.app"),
 	twitter: {
 		card: "summary_large_image",
@@ -64,7 +64,7 @@ export default function RootLayout({
 							source
 						</A>{" "}
 						/{" "}
-						<A href="https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fai-ng%2Fmagic-spell&env=GROQ_API_KEY&envDescription=Groq%20API%20key%20from%20https%3A%2F%2Fconsole.groq.com%2Fkeys&project-name=magic-spell&repository-name=magic-spell&demo-title=Magic%20Spell&demo-description=An%20AI-powered%20text%20editor%20built%20with%20Next.js%20and%20the%20Vercel%20AI%20SDK%2C%20using%20Groq%20for%20super%20fast%20inference.&demo-url=https%3A%2F%2Fmagic-spell.vercel.app">
+						<A href="https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fai-ng%2Fmagic-spell&env=GROQ_API_KEY&envDescription=Groq%20API%20key%20from%20https%3A%2F%2Fconsole.groq.com%2Fkeys&project-name=magic-spell&repository-name=magic-spell&demo-title=Magic%20Spell&demo-description=AI%20prompting%20built%20into%20your%20%3Ctextarea%3E&demo-url=https%3A%2F%2Fmagic-spell.vercel.app&demo-image=https%3A%2F%2Fmagic-spell.vercel.app%2Fopengraph-image.png">
 							deploy
 						</A>
 					</p>
