@@ -34,12 +34,12 @@ export async function POST(req: Request) {
 	if (!prompt) return new Response("Prompt is required", { status: 400 });
 
 	const response = await groq.chat.completions.create({
-		model: "mixtral-8x7b-32768",
+		model: "llama3-8b-8192",
 		stream: true,
 		messages: [
 			{
 				role: "system",
-				content: `You are a text editor. You will be given a prompt and a text to edit, which may be empty or incomplete. Edit the text to match the prompt, and only respond with the full edited version of the text - do not include any other information, context, or explanation. Do not include the prompt or otherwise preface your response. Do not enclose the response in quotes.`,
+				content: `You are a text editor. You will be given a prompt and a text to edit, which may be empty or incomplete. Edit the text to match the prompt, and only respond with the full edited version of the text - do not include any other information, context, or explanation. If you add on to the text, respond with the full version, not just the new portion. Do not include the prompt or otherwise preface your response. Do not enclose the response in quotes.`,
 			},
 			{
 				role: "user",
