@@ -48,6 +48,12 @@ export default function Home() {
 				placeholder="It was a dark and stormy night..."
 				aria-label="Text"
 				cacheMeasurements
+				onKeyDown={(e) => {
+					if ((e.ctrlKey || e.metaKey) && e.key === "Enter") {
+						e.preventDefault();
+						e.currentTarget.form?.requestSubmit();
+					}
+				}}
 			/>
 
 			<div className="rounded-full drop-shadow-sm bg-gray-100 border border-gray-200 -mt-5 dark:bg-gray-900 dark:border-gray-800 flex focus-within:border-blue-300 dark:focus-within:border-blue-700 transition-colors">
