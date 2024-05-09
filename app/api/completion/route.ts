@@ -1,5 +1,5 @@
-import OpenAI from "openai";
-import { OpenAIStream, StreamingTextResponse } from "ai";
+import { StreamingTextResponse, streamText } from "ai";
+import { createOpenAI } from "@ai-sdk/openai";
 import { Ratelimit } from "@upstash/ratelimit";
 import { Redis } from "@upstash/redis";
 
@@ -15,8 +15,8 @@ const ratelimit =
 		  })
 		: false;
 
-const groq = new OpenAI({
-	apiKey: process.env.GROQ_API_KEY!,
+const groq = createOpenAI({
+	apiKey: process.env.GROQ_API_KEY,
 	baseURL: "https://api.groq.com/openai/v1",
 });
 
@@ -33,21 +33,11 @@ export async function POST(req: Request) {
 	const { text, prompt } = await req.json();
 	if (!prompt) return new Response("Prompt is required", { status: 400 });
 
-	const response = await groq.chat.completions.create({
-		model: "llama3-8b-8192",
-		stream: true,
-		messages: [
-			{
-				role: "system",
-				content: `You are a text editor. You will be given a prompt and a text to edit, which may be empty or incomplete. Edit the text to match the prompt, and only respond with the full edited version of the text - do not include any other information, context, or explanation. If you add on to the text, respond with the full version, not just the new portion. Do not include the prompt or otherwise preface your response. Do not enclose the response in quotes.`,
-			},
-			{
-				role: "user",
-				content: `Prompt: ${prompt}\nText: ${text}`,
-			},
-		],
+	const result = await streamText({
+		model: groq("llama3-8b-8192"),
+		system: "You are a text editor. You will be given a prompt and a text to edit, which may be empty or incomplete. Edit the text to match the prompt, and only respond with the full edited version of the text - do not include any other information, context, or explanation. If you add on to the text, respond with the full version, not just the new portion. Do not include the prompt or otherwise preface your response. Do not enclose the response in quotes.",
+		prompt: `Prompt: ${prompt}\nText: ${text}`,
 	});
 
-	const stream = OpenAIStream(response);
-	return new StreamingTextResponse(stream);
+	return new StreamingTextResponse(result.toAIStream());
 }
