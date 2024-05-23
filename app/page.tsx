@@ -2,7 +2,7 @@
 
 import { LoaderIcon, SparklesIcon } from "@/app/icons";
 import { useCompletion } from "ai/react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import TextareaAutosize from "react-textarea-autosize";
 import { toast } from "sonner";
 
@@ -21,11 +21,6 @@ export default function Home() {
 		onFinish: (prompt, completion) => setText(completion.trim()),
 		onError: (error) => toast.error(error.message),
 	});
-
-	// warm up the completion endpoint
-	useEffect(() => {
-		fetch("/api/completion").catch(() => {});
-	}, []);
 
 	return (
 		<form
