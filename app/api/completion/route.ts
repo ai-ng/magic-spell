@@ -12,6 +12,7 @@ const ratelimit =
 				}),
 				limiter: Ratelimit.slidingWindow(10, "5 m"),
 				analytics: true,
+				prefix: "magic-spell"
 		  })
 		: false;
 
