@@ -1,5 +1,5 @@
-import { StreamingTextResponse, streamText } from "ai";
-import { createOpenAI } from "@ai-sdk/openai";
+import { streamText } from "ai";
+import { groq } from "@ai-sdk/groq";
 import { Ratelimit } from "@upstash/ratelimit";
 import { Redis } from "@upstash/redis";
 
@@ -12,14 +12,9 @@ const ratelimit =
 				}),
 				limiter: Ratelimit.slidingWindow(10, "5 m"),
 				analytics: true,
-				prefix: "magic-spell"
+				prefix: "magic-spell",
 		  })
 		: false;
-
-const groq = createOpenAI({
-	apiKey: process.env.GROQ_API_KEY,
-	baseURL: "https://api.groq.com/openai/v1",
-});
 
 export async function POST(req: Request) {
 	if (ratelimit) {
@@ -34,11 +29,12 @@ export async function POST(req: Request) {
 	const { text, prompt } = await req.json();
 	if (!prompt) return new Response("Prompt is required", { status: 400 });
 
-	const result = await streamText({
+	const result = streamText({
 		model: groq("llama3-8b-8192"),
-		system: "You are a text editor. You will be given a prompt and a text to edit, which may be empty or incomplete. Edit the text to match the prompt, and only respond with the full edited version of the text - do not include any other information, context, or explanation. If you add on to the text, respond with the full version, not just the new portion. Do not include the prompt or otherwise preface your response. Do not enclose the response in quotes.",
+		system:
+			"You are a text editor. You will be given a prompt and a text to edit, which may be empty or incomplete. Edit the text to match the prompt, and only respond with the full edited version of the text - do not include any other information, context, or explanation. If you add on to the text, respond with the full version, not just the new portion. Do not include the prompt or otherwise preface your response. Do not enclose the response in quotes.",
 		prompt: `Prompt: ${prompt}\nText: ${text}`,
 	});
 
-	return new StreamingTextResponse(result.toAIStream());
+	return result.toDataStreamResponse();
 }
