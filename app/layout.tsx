@@ -36,7 +36,7 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body
-				className={`${geist.variable} ${geistMono.variable} font-sans bg-red-600 dark:bg-red-700 text-black dark:text-white flex flex-col items-center px-3 py-10 min-h-dvh`}
+				className={`${geist.variable} ${geistMono.variable} font-sans bg-blue-900 dark:bg-blue-950 text-black dark:text-white flex flex-col items-center px-3 py-10 min-h-dvh`}
 			>
 				<Toaster richColors theme="system" />
 
